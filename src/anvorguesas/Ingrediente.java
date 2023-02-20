@@ -39,4 +39,19 @@ public class Ingrediente {
 		return "Ingrediente [nombre=" + nombre + ", costoAdicional=" + costoAdicional + "]";
 	}
 
+	public String generarTextoFactura() {
+		String factura;
+		int tamaño = getNombre().length();
+		int pos = getNombre().indexOf(" ", 12);
+		
+		if (tamaño>20 && pos>=12) {
+			factura=getNombre().substring(0, pos) +" ".repeat(20-pos)+"$"+getCostoAdicional()+"\n";
+			factura+=getNombre().substring(pos)+"\n";
+		}else {
+			factura=getNombre()+ " ".repeat(20-tamaño)+"$"+getCostoAdicional()+"\n";
+		}
+
+		return factura;
+	}
+
 }

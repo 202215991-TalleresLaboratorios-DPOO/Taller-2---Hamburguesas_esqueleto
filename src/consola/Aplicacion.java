@@ -91,6 +91,7 @@ public class Aplicacion {
 		System.out.println("1. Menú General");
 		System.out.println("2. Combos");
 		System.out.println("3. Ingredientes Adicionales");
+		System.out.println("4. Bebidas");
 		
 		int opcionSeleccionada;
 		
@@ -106,6 +107,13 @@ public class Aplicacion {
 			}
 			else if (opcionSeleccionada == 3) {
 				mostrarIngredientes();
+			}
+			
+			else if (opcionSeleccionada == 4) {
+				mostrarBebidas();
+			}
+			else {
+				System.out.println("Debe seleccionar uno de los números de las opciones.");
 			}
 		}
 		catch (NumberFormatException e)
@@ -302,10 +310,8 @@ public class Aplicacion {
 		List<ProductoMenu> menuBase = restaurante.getMenuBase();
 		
 		for (int i = 0; i < menuBase.size(); i++) {
-			String nombre = menuBase.get(i).getNombre();
-			int precio = menuBase.get(i).getPrecio();
-			
-			System.out.println((i+1)+". "+nombre+" = $"+precio);
+
+			System.out.println((i+1)+". "+menuBase.get(i).generarTextoFactura());
 		}
 		return menuBase;
 	}
@@ -314,10 +320,7 @@ public class Aplicacion {
 		List<Combo> combos = restaurante.getCombos();
 		
 		for (int i = 0; i < combos.size(); i++) {
-			String nombre = combos.get(i).getNombre();
-			int precio = combos.get(i).getPrecio();
-			
-			System.out.println((i+1)+". "+nombre+" = $"+precio);
+			System.out.println((i+1)+". "+combos.get(i).generarTextoFactura());
 		}
 		return combos;
 		
@@ -327,10 +330,8 @@ public class Aplicacion {
 		List<Ingrediente> ingredientes = restaurante.getIngredientes();
 		
 		for (int i = 0; i < ingredientes.size(); i++) {
-			String nombre = ingredientes.get(i).getNombre();
-			int precio = ingredientes.get(i).getCostoAdicional();
-			
-			System.out.println((i+1)+". "+nombre+" = $"+precio);
+
+			System.out.println((i+1)+". "+ingredientes.get(i).generarTextoFactura());
 		}
 		return ingredientes;
 	}
@@ -339,10 +340,8 @@ public class Aplicacion {
 		List<ProductoMenu> bebidas = restaurante.getBebidas();
 		
 		for (int i = 0; i < bebidas.size(); i++) {
-			String nombre = bebidas.get(i).getNombre();
-			int precio = bebidas.get(i).getPrecio();
-			
-			System.out.println((i+1)+". "+nombre+" = $"+precio);
+
+			System.out.println((i+1)+". "+bebidas.get(i).generarTextoFactura());
 		}
 		return bebidas;
 	}

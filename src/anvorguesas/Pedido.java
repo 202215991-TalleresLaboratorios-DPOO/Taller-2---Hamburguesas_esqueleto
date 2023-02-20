@@ -58,9 +58,9 @@ public class Pedido {
 			factura += producto.generarTextoFactura();
 		}
 		
-		factura +="SubTotal\t\t\t\t$"+getPrecioNetoPedido()+"\n";
-		factura +="IVA\t\t\t\t\t$"+getPrecioIvaPedido()+"\n";
-		factura +="Total\t\t\t\t\t$"+getPrecioIvaPedido()+"\n";
+		factura +="SubTotal"+" ".repeat(12)+"$"+getPrecioNetoPedido()+"\n";
+		factura +="IVA"+" ".repeat(17)+"$"+getPrecioIvaPedido()+"\n";
+		factura +="Total"+" ".repeat(15)+"$"+getPrecioTotalPedido()+"\n";
 		
 		return factura;
 	}

@@ -1,8 +1,9 @@
 Pedido Numero 1
-Cliente: Daniel
-Dirección Cliente: Carreara xx #xx-xx
+Cliente: s
+Dirección Cliente: 1
 
-hawaiana				$20000
-SubTotal				$20000
-IVA					$3800
-Total					$3800
+papas en casco medianas                     $5500
+gaseosa                     $5000
+SubTotal             $10500
+IVA                 $1995
+Total                   $1995
