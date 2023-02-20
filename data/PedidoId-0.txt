@@ -1,18 +1,7 @@
 Pedido Numero 0
-Cliente: 2
-Dirección Cliente: 2
+Cliente: 1
+Dirección Cliente: 1
 
-corral				$15000
-Adicionales:
-  - lechuga
-combo corral queso		$29150
-  - corral queso
-  - papas medianas
-  - gaseosa		
-papas en casco medianas	$5500
-papas en casco medianas	$11500
-Adicionales:
-  - tocineta picada
-SubTotal				$61150
-IVA					$11618
-Total					$11618
+SubTotal				$0
+IVA					$0
+Total					$0

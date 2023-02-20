@@ -17,7 +17,7 @@ public class Restaurante {
 	private List<Ingrediente> ingredientes;
 	
 	public Restaurante() {
-		
+		pedidos = new ArrayList<>();
 	}
 	
 	public void iniciarPedido(String nombreCliente,String direccionCliente) {
@@ -74,7 +74,28 @@ public class Restaurante {
 	public List<Ingrediente> getIngredientes() {
 		return ingredientes;
 	}
-	
+	public String consultarPedido(File archivoPedido) {
+		BufferedReader br;
+		String archivoString="";
+		try {
+			br = new BufferedReader(new FileReader(archivoPedido));
+			String linea = br.readLine();
+			while (linea != null) {
+				archivoString+=linea;
+				linea = br.readLine();
+				
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			System.out.println("El Pedido Buscado No existe");
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return archivoString;
+	}
+			
+			
 	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
 		cargarIngredientes(archivoIngredientes);
 		cargarMenu(archivoMenu);

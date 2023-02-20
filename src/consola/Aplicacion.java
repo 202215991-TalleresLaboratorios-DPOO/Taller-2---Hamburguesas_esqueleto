@@ -65,7 +65,7 @@ public class Aplicacion {
 			ejecutarOpcion4();
 		}
 			
-		else if ( opcionSeleccionada == 5 && restaurante.getPedidoEnCurso()!= null) {
+		else if ( opcionSeleccionada == 5) {
 			ejecutarOpcion5();
 		}
 			
@@ -170,9 +170,10 @@ public class Aplicacion {
 				
 				if (opcionSeleccionada == 1) 
 					seleccionarIngrediente(productoMenu);
-				else
+				else {
 					restaurante.editarPedido(productoMenu);
 					System.out.println("\n"+productoMenu.generarTextoFactura());
+				}
 
 				
 			} else {
@@ -266,8 +267,8 @@ public class Aplicacion {
 			System.out.println("Debe seleccionar uno de los números de las opciones.");
 		}
 		
-		restaurante.editarPedido(productoAjustado);
 		System.out.println("\n"+productoAjustado.generarTextoFactura());
+		restaurante.editarPedido(productoAjustado);
 
 	}
 	
@@ -321,7 +322,18 @@ public class Aplicacion {
 	}
 
 	private void ejecutarOpcion5() {
-		// TODO Auto-generated method stub
+		try {
+			int pedido = Integer.parseInt(input("Ingrese el Id de su pedido"));
+			
+			String nameFileString = "./data/PedidoId-"+pedido+".txt";
+			
+			File archivoPedido = new File(nameFileString);
+			restaurante.consultarPedido(archivoPedido);
+		}
+		catch (NumberFormatException e){
+			System.out.println("Debe seleccionar uno de los números de las opciones.");
+		}
+		
 		
 	}
 
