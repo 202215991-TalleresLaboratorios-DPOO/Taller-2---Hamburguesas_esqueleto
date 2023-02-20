@@ -26,8 +26,9 @@ public class Aplicacion {
 		File ingreFile = new File("./data/ingredientes.txt");
 		File menuFile = new File("./data/menu.txt");
 		File combosFile = new File("./data/combos.txt");
+		File bebidasFile = new File("./data/bebidas.txt");
 		
-		restaurante.cargarInformacionRestaurante(ingreFile, menuFile, combosFile);
+		restaurante.cargarInformacionRestaurante(ingreFile, menuFile, combosFile, bebidasFile);
 		
 		while (continuar) {
 			
@@ -131,6 +132,7 @@ public class Aplicacion {
 		
 		System.out.println("1. Menú General");
 		System.out.println("2. Combos");
+		System.out.println("3. Bebidas");
 		
 		int opcionSeleccionada;
 		
@@ -142,6 +144,9 @@ public class Aplicacion {
 			}
 			else if (opcionSeleccionada == 2) {
 				seleccionarProductoCombo();
+			}
+			else if (opcionSeleccionada == 3) {
+					seleccionarProductoBebidas();
 			}else {
 				System.out.println("Ingrese una opcion Valida");
 			}
@@ -271,6 +276,27 @@ public class Aplicacion {
 		restaurante.editarPedido(productoAjustado);
 
 	}
+	private void seleccionarProductoBebidas() {
+		int indexBebida = 0;
+		List<ProductoMenu> bebidas = mostrarBebidas();
+		try {
+			indexBebida = Integer.parseInt(input("Seleccione una opción"));
+			if (indexBebida > 0 && indexBebida <= bebidas.size()) {
+				
+				ProductoMenu bebida = bebidas.get(indexBebida-1);
+				
+				restaurante.editarPedido(bebida);
+				System.out.println("\n"+bebida.generarTextoFactura());
+
+				
+			} else {
+				System.out.println("Ingrese una opcion Valida");
+			}
+		}
+		catch (NumberFormatException e){
+			System.out.println("Debe seleccionar uno de los números de las opciones.");
+		}
+	}
 	
 	private List<ProductoMenu> mostrarMenuBase() {
 		List<ProductoMenu> menuBase = restaurante.getMenuBase();
@@ -309,6 +335,18 @@ public class Aplicacion {
 		return ingredientes;
 	}
 	
+	private List<ProductoMenu> mostrarBebidas() {
+		List<ProductoMenu> bebidas = restaurante.getBebidas();
+		
+		for (int i = 0; i < bebidas.size(); i++) {
+			String nombre = bebidas.get(i).getNombre();
+			int precio = bebidas.get(i).getPrecio();
+			
+			System.out.println((i+1)+". "+nombre+" = $"+precio);
+		}
+		return bebidas;
+	}
+	
 	
 	private void ejecutarOpcion4() {
 		try {
@@ -328,7 +366,8 @@ public class Aplicacion {
 			String nameFileString = "./data/PedidoId-"+pedido+".txt";
 			
 			File archivoPedido = new File(nameFileString);
-			restaurante.consultarPedido(archivoPedido);
+			String factura = restaurante.consultarPedido(archivoPedido);
+			System.out.println(factura);
 		}
 		catch (NumberFormatException e){
 			System.out.println("Debe seleccionar uno de los números de las opciones.");

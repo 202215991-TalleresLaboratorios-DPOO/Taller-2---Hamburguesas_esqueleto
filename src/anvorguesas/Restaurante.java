@@ -81,7 +81,7 @@ public class Restaurante {
 			br = new BufferedReader(new FileReader(archivoPedido));
 			String linea = br.readLine();
 			while (linea != null) {
-				archivoString+=linea;
+				archivoString+=linea+"\n";
 				linea = br.readLine();
 				
 			}
@@ -96,12 +96,14 @@ public class Restaurante {
 	}
 			
 			
-	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos) {
+	public void cargarInformacionRestaurante(File archivoIngredientes, File archivoMenu, File archivoCombos,File archivoBebidas) {
 		cargarIngredientes(archivoIngredientes);
 		cargarMenu(archivoMenu);
 		cargarCombos(archivoCombos);
+		cargarBebidas(archivoBebidas);
 	}
 	
+
 	private void cargarIngredientes(File archivoIngredientes) {
 		BufferedReader br;
 		
@@ -132,6 +134,32 @@ public class Restaurante {
 		}
 	}
 	
+	private void cargarBebidas(File archivoBebidas) {
+		BufferedReader br;
+		try {
+			br = new BufferedReader(new FileReader(archivoBebidas));
+			String linea = br.readLine();
+			bebidas = new ArrayList<>();
+			while (linea != null) {
+				String[] datos = linea.split(";");
+				
+				String nombre = datos[0];
+				int precio = Integer.parseInt(datos[1]);
+				
+				ProductoMenu pMenu = new ProductoMenu(nombre, precio);
+				bebidas.add(pMenu);
+				
+				linea = br.readLine();
+				
+			}
+		} catch (FileNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
 	private void cargarMenu(File archivoMenu) {
 		BufferedReader br;
 		try {

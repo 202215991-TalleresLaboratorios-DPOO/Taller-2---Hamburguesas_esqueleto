@@ -1,7 +1,14 @@
 Pedido Numero 0
-Cliente: 1
-Dirección Cliente: 1
+Cliente: santiago
+Dirección Cliente: Carrera xx #xx-xx
 
-SubTotal				$0
-IVA					$0
-Total					$0
+agua cristal sin gas	$5000
+combo todoterreno		$34133
+  - todoterreno
+  - papas grandes
+mexicana				$22000
+Eliminado:
+  - cebolla
+SubTotal				$61133
+IVA					$11615
+Total					$11615

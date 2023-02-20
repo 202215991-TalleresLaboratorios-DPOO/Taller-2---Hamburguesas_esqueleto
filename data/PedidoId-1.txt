@@ -1,0 +1,8 @@
+Pedido Numero 1
+Cliente: Daniel
+Dirección Cliente: Carreara xx #xx-xx
+
+hawaiana				$20000
+SubTotal				$20000
+IVA					$3800
+Total					$3800
